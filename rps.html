@@ -8,50 +8,49 @@
     <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <i class="far fa-hand-scissors"></i>
     <script src="script.js"></script>
-    <p>
-
-        <div class="center">
-        <h1>rock, paper, scissors</h1>
-        <div class="circle">
-        <button class="move" id="rock"><div class="hand"><i class="far fa-hand-rock"></i></hand></button>
-        <button class="move" id="paper"><div class="hand"><i class="far fa-hand-paper"></i></hand></button>
-        
-        <button class="move" id="scissors"><div class="hand"><i class="far fa-hand-scissors"></i></hand></button>
+    <div class="center"><h1>rock, paper, scissors</h1>
+        <div class="row">
+        <div class="column" id="col1">
+            <div class="circle">
+                <button class="move" onclick="playGame('rock')"><div class="hand"><i class="far fa-hand-rock"></i></hand></button>
+                <button class="move" onclick="playGame('paper')"><div class="hand"><i class="far fa-hand-paper"></i></hand></button>
+                <button class="move" onclick="playGame('scissors')"><div class="hand"><i class="far fa-hand-scissors"></i></hand></button>
+            </div>
         </div>
-        
-        <table class="battleground">
-        <tr>
-         <th>battleground</th>
-        </tr>
-        <tr>
-         <td>2</td>
-        </tr>
-        </table>
-        
-        <table class="score">
-        <tr>
-         <th>player score</th>
-         <th>computer score</th>
-        </tr>
-        <tr>
-         <td>1</td>
-         <td>2</td>
-        </tr>
-        </table>
-        <table class="score">
-        <tr>
-         <th lcass>round</th>
-         <th>player move</th>
-         <th>computer move</th>
-        </tr>
-        <tr>
-         <td>1</td>
-         <td>1</td>
-         <td>2</td>
-        </tr>
+        <div class="column" id="col2">
+            <table class="battleground">
+            <tr>
+             <th>battleground</th>
+            </tr>
+            <tr>
+             <td id="battleground"></td>
+            </tr>
+            </table>
+        <p>
+            <table class="score">
+            <tr>
+             <th>player score</th>
+             <th>computer score</th>
+            </tr>
+            <tr>
+             <td class="scoreboard" id="player_score">0</td>
+             <td class="scoreboard" id="computer_score">0</td>
+            </tr>
+            </table>
+            <table class="score">
+                <tr>
+                <th>round</th>
+                <th>player move</th>
+                <th>computer move</th>
+            </tr>
+            <tr>
+             <td id="round">1</td>
+             <td id="player_move"></td>
+             <td id="computer_move"></td>
+            </tr>
         </div>
+    </div> 
         
 </body>
 </html>
