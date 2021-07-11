@@ -24,5 +24,7 @@ th { margin: 20px; padding: 7px; border: 1px solid black; border-collapse: colla
 
 .column { float: left}
 #col1 {width: 460px;}
-#col2 {width: 60%;}
+#col2 {width: 40%; margin-right: 10px;}
+#col3 {width: 30px;}
+
 .row:after { content: ""; display: table; clear: both;}

@@ -12,6 +12,7 @@
 let userMove;
 let userScore = 0;
 let computerScore = 0;
+let round = 0;
 function playGame (move) {
     userMove = move;
 
@@ -34,20 +35,23 @@ function playGame (move) {
     if (userValue == compValue) {
         console.log("It's a tie!");
         callGame('user', 'computer', userMove, compMove);
-        makeHistory(1, userMove, compMove);
+        round = calcRound(round);
+        printRound(round, userMove, compMove);
     }
     else if ( ((userValue > compValue) && (userValue - compValue != 2) || (userValue - compValue == -2) )) {
         callGame('user', 'computer', userMove, compMove);
         userScore = calcScore(userScore);
         printScore(userScore, computerScore);
-        makeHistory(1, userMove, compMove);
+        round = calcRound(round);
+        printRound(round, userMove, compMove);
         console.log('poop');
     }
     else {
         callGame('computer', 'user', compMove, userMove);
         computerScore = calcScore(computerScore);
         printScore(userScore, computerScore);
-        makeHistory(userMove, compMove);
+        round = calcRound(round);
+        printRound(round, userMove, compMove);
     }
 }
 
@@ -57,38 +61,43 @@ function calcScore(winner) {
 }
 
 function printScore(userScore, computerScore) {
-    newScoreUser = document.getElementById('player_score');
-    newScoreComp = document.getElementById('computer_score');
+    let newScoreUser = document.getElementById('player_score');
+    let newScoreComp = document.getElementById('computer_score');
     newScoreUser.innerHTML = `${userScore}`;
     newScoreComp.innerHTML = `${computerScore}`;
 }
 
-function calcRound() {
-
+function calcRound(round) {
+    round++;
+    return round;
 }
 
-function makeHistory(roundNum, userMove, computerMove) {
-    round = document.getElementById('round');
-    player_move = document.getElementById('player_move');
-    computer_move = document.getElementById('computer_move');
-    player_move.innerHTML = `<i class="far fa-hand-${userMove}"></i>`;
-    computer_move.innerHTML = `<i class="far fa-hand-${computerMove}"></i>`;
+function printRound(round, userMove, computerMove) {
+    let roundTable = document.getElementById('rounds');
+    let row = roundTable.insertRow(round - 1);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    cell1.innerHTML = `${round}`;
+    cell2.innerHTML = `<i class="far fa-hand-${userMove}"></i>`;
+    cell3.innerHTML = `<i class="far fa-hand-${computerMove}"></i>`;
 }
+
 
 function callGame(winner, loser, winnerMove, loserMove) {
-    loserSentValue = getRandomInt(0,3);
-    winnerSentValue = getRandomInt(0,3);
-    loserSentArray = [`The ${loser} tried desperately to fight with ${loserMove}, but it's futile.`,
+    let loserSentValue = getRandomInt(0,3);
+    let winnerSentValue = getRandomInt(0,3);
+    let loserSentArray = [`The ${loser} tried desperately to fight with ${loserMove}, but it's futile.`,
                         `The ${loser} makes an attempted sneak attack with ${loserMove}, but the ${winner} sees it coming.`,
                     `After much thought, the ${loser} throws ${loserMove}. Little did he know what was waiting for him.`,
                     `The ${loser} throws up his hands and recklessly throws ${loserMove}.`]
-    winnerSentArray = [`${winner.charAt(0).toUpperCase() + winner.slice(1)} destroys the ${loser}'s ${loserMove} with ${winnerMove}. It wasn't even a contest.`,
+    let winnerSentArray = [`${winner.charAt(0).toUpperCase() + winner.slice(1)} destroys the ${loser}'s ${loserMove} with ${winnerMove}. It wasn't even a contest.`,
                     `The ${winner} sees the ${loserMove} and defiantly throws ${winnerMove} to obliterate the ${loser}.`,
                     `Seeing the ${loserMove}, the ${winner} laughs mockingly at the ${loserMove} and throws ${winnerMove} to stop the ${loser} in their tracks.`,
                     `Without hesitation, the ${winner} throws ${winnerMove}. The ${loser} is taken aback as he sees his ${loserMove} get obliterated without effort.`]
 
     //winnerMove = winnerMove.charAt(0).toUpperCase() + winnerMove.slice(1);
-    bg = document.getElementById('battleground');
+    let bg = document.getElementById('battleground');
     if (winnerMove == loserMove) {
         bg.innerHTML = `${winner} plays ${winnerMove}, ${loser} plays ${loserMove}<p>It's a tie.`;
     }
