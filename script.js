@@ -42,9 +42,9 @@ function playGame (move) {
     else {
         callGame('computer', 'user', compMove, userMove);
         computerScore = calcScore(computerScore);
-        roundWinner = 'computer';
         printScore(userScore, computerScore);
         round = calcRound(round);
+        roundWinner = 'computer';
         printRound(round, userMove, compMove, roundWinner);
        
     }
@@ -75,6 +75,9 @@ function printRound(round, userMove, computerMove, winner) {
     let cell3 = row.insertCell(2);
     // pick up here
     cell1.innerHTML = `${round}`;
+    cell2.innerHTML = `<i class="far fa-hand-${userMove}"></i>`;
+    cell3.innerHTML = `<i class="far fa-hand-${computerMove}"></i>`;
+    
     if (winner == 'user') {
         cell2.css('background-color', 'rgb(144,238,144)');
         document.cell2.style.backgroundColor = 'rgb(144,238,144)';
@@ -83,8 +86,7 @@ function printRound(round, userMove, computerMove, winner) {
         document.cell3.style.backgroundColor = 'rgb(144,238,144)';
     }
 
-    cell2.innerHTML = `<i class="far fa-hand-${userMove}"></i>`;
-    cell3.innerHTML = `<i class="far fa-hand-${computerMove}"></i>`;
+    
 
 }
 
