@@ -76,6 +76,7 @@ function printRound(round, userMove, computerMove, winner) {
     // pick up here
     cell1.innerHTML = `${round}`;
     if (winner == 'user') {
+        cell2.css('background-color', 'rgb(144,238,144)')
         document.cell2.style.backgroundColor = 'rgb(144,238,144)';
     }
     else if (winner == 'computer') {
