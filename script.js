@@ -78,12 +78,12 @@ function printRound(round, userMove, computerMove, winner) {
     cell2.innerHTML = `<i class="far fa-hand-${userMove}"></i>`;
     cell3.innerHTML = `<i class="far fa-hand-${computerMove}"></i>`;
 
-    //if (winner == 'user') {
-    //    cell2.style.backgroundColor = 'rgb(144,238,144)';
-    //}
-    //else if (winner == 'computer') {
-    //    cell3.style.backgroundColor = 'rgb(144,238,144)';
-    //}
+    if (winner == 'user') {
+        cell2.style.backgroundColor = 'rgb(144,238,144)';
+    }
+    else if (winner == 'computer') {
+        cell3.style.backgroundColor = 'rgb(144,238,144)';
+    }
 
     
 
