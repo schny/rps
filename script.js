@@ -1,14 +1,3 @@
-//let userMove;
-//do {
-//userMove = prompt('Rock, paper, or scissors?');
-//userMove = userMove.toLowerCase();
-//}
-//while (userMove != 'rock' && userMove != 'paper' && userMove != 'scissors')
-
-//trying to get data from button
-
-
-
 let userMove;
 let userScore = 0;
 let computerScore = 0;
