@@ -28,3 +28,7 @@ th { margin: 20px; padding: 7px; border: 1px solid black; border-collapse: colla
 #col3 {width: 30px;}
 
 .row:after { content: ""; display: table; clear: both;}
+
+.winner {
+    background-color:rgb(255,215,0);
+}

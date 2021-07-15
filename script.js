@@ -58,8 +58,8 @@ function calcScore(winner) {
 function printScore(userScore, computerScore) {
     let newScoreUser = document.getElementById('player_score');
     let newScoreComp = document.getElementById('computer_score');
-    newScoreUser.innerHTML = `${userScore}`;
-    newScoreComp.innerHTML = `${computerScore}`;
+    newScoreUser.textContent = `${userScore}`;
+    newScoreComp.textContent = `${computerScore}`;
 }
 
 function calcRound(round) {
@@ -68,21 +68,24 @@ function calcRound(round) {
 }
 
 function printRound(round, userMove, computerMove, winner) {
-    let roundTable = document.getElementById('rounds');
-    let row = roundTable.insertRow(round - 1);
-    let cell1 = row.insertCell(0);
-    let cell2 = row.insertCell(1);
-    let cell3 = row.insertCell(2);
-    // pick up here
-    cell1.innerHTML = `${round}`;
-    cell2.innerHTML = `<i class="far fa-hand-${userMove}"></i>`;
-    cell3.innerHTML = `<i class="far fa-hand-${computerMove}"></i>`;
-
+    let roundTable = document.querySelector('#rounds');
+    let newRound = document.createElement('tr');
+    let roundNum = document.createElement('td');
+    let userRound = document.createElement('td');
+    let compRound = document.createElement('td');
+    roundNum.innerHTML = `${round}`;
+    userRound.innerHTML = `<i class="far fa-hand-${userMove}"></i>`;
+    compRound.innerHTML = `<i class="far fa-hand-${computerMove}"></i>`;
+    newRound.appendChild(roundNum);
+    newRound.appendChild(userRound);
+    newRound.appendChild(compRound);
+    roundTable.appendChild(newRound);
+    console.log(roundTable);
     if (winner == 'user') {
-        cell2.style.backgroundColor = 'rgb(144,238,144)';
+        userRound.classList.add('winner');
     }
     else if (winner == 'computer') {
-        cell3.style.backgroundColor = 'rgb(144,238,144)';
+        compRound.classList.add('winner');
     }
 
     
